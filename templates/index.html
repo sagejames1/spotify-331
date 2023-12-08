@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+<center>
+    <div class="envelope-container">
+        <img src="{{ url_for('static', filename='images/envelope.png') }}" alt="envelope" class="envelope-image">
+        <div class ="address">
+            <h1>Spotify Integration</h1>
+            <h2>Top Track Generator</h2>
+        </div>
+        
+        <button onclick="location.href = '/login';" class="login-button">
+            <img src="{{ url_for('static', filename='images/heart.png') }}" alt="heart" class="heart-img">
+        </button>
+       
+    </div>
+</center>
+<footer>Shane Costello & Sage James || CSCI 331 Final Project</footer>   
+</body>
+</html>

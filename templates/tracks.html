@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts/main.js') }}" defer></script>
+    <title>Top Tracks</title>
+</head>
+<body onload="showLastMonthTracks()">
+    <button class ="logout-button" onclick="spotifyLogout()">Logout from Spotify</button>
+
+    <div class="letter">
+        <img src="{{ url_for('static', filename='images/stars.png') }}" alt="Stars" class="stars-image">
+        <center>
+           <h1 class="handwritten"> Handwritten Letter </h1> 
+           <h2 class="typewriter">Spotify API Project</h2>
+           <h2 class="typewriter">Welcome {{ user_name }}</h2>
+        </center>
+        
+        <div class="button-container">
+            <button class="image-button" onclick="showLastMonthTracks()">
+                <img src="{{ url_for('static', filename='images/9.png') }}" alt="Last Month's Top Tracks">
+            </button>
+
+            <button class="image-button" onclick="showLastSixMonthsTracks()">
+                <img src="{{ url_for('static', filename='images/10.png') }}" alt="Last 6 Months' Top Tracks">
+            </button>
+
+            <button class="image-button" onclick="showAllTimeTracks()">
+                <img src="{{ url_for('static', filename='images/11.png') }}" alt="All Time Top Tracks">
+            </button>
+        </div>
+        <div id="download">
+        <div class="notecard-container">
+            <img src="{{ url_for('static', filename='images/notecard.png') }}" alt="notecard" class="notecard-image">
+            <!-- hide when 6m or all time are selected -->
+            <div id="lastMonth">
+                <div class="artist-list">
+                    <!-- repeating list of the artist -->
+                    {% for artist in short_term_artist['items'] %}
+                        <p>{{ artist['name'] }}</p>
+                    {% endfor %} 
+                </div>
+                <div class="handwritten-note">
+                    <p>i cannot stop listening to <br> {{ short_term_track['items'][0]['name'] }} by <br>{{ short_term_track['items'][0]['artists'][0]['name'] }}</p>
+                </div>
+            </div>
+            <!-- hide when other 1m or all time are selected -->
+            <div id="6months">
+                <div class="artist-list">
+                    <!-- repeating list of the artist -->
+                    {% for artist in medium_term_artist['items'] %}
+                        <p>{{ artist['name'] }}</p>
+                    {% endfor %} 
+                </div>
+                <div class="handwritten-note">
+                    <p>i cannot stop listening to <br>{{ medium_term_track['items'][0]['name'] }} by <br>{{ medium_term_track['items'][0]['artists'][0]['name'] }}</p>
+                </div>
+            </div>
+            <!-- hide when other 1m or 6m are selected -->
+            <div id="allTime">
+                <!-- repeating list of the artist  -->
+                <div class="artist-list"> 
+                    {% for artist in long_term_artist['items'] %}
+                    <p>{{ artist['name'] }}</p>
+                {% endfor %} 
+                </div>
+                <div class="handwritten-note">
+                    <p>i cannot stop listening to <br>{{ long_term_track['items'][0]['name'] }} by <br>{{ long_term_track['items'][0]['artists'][0]['name'] }}</p>
+                 </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+        <div class="button-container">
+            <button class="image-button-download" onclick="downloadAsPNG()">
+                <img src="{{ url_for('static', filename='images/download.png') }}" alt="download image button">
+            </button>
+        </div>
+        
+    </div>
+    <footer>Shane Costello & Sage James || CSCI 331 Final Project</footer>   
+</body>
+</html>
