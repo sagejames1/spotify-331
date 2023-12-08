@@ -8,8 +8,8 @@ import os
 import requests
 
 #DEFINING CONSTS
-CLIENT_ID = "7335fe8c6a29494394c314526901fc59"
-CLIENT_SECRET = "cc7ed1f76e35410392b62fd6a01d4e73"
+CLIENT_ID = ""
+CLIENT_SECRET = ""
 TOKEN_INFO = "token_info"
 SECRET_KEY = "asdf"
 SHORT_TERM = "short_term"
