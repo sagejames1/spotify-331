@@ -5,10 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/styles.css') }}">
     <script src="{{ url_for('static', filename='scripts/main.js') }}" defer></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <title>Top Tracks</title>
 </head>
 <body onload="showLastMonthTracks()">
-    <button class ="logout-button" onclick="spotifyLogout()">Logout from Spotify</button>
+    <button class="logout-button" onclick="spotifyLogout()">
+        <img src="{{ url_for('static', filename='images/logout.png') }}" alt="logout button">
+      </button>
+      
 
     <div class="letter">
         <img src="{{ url_for('static', filename='images/stars.png') }}" alt="Stars" class="stars-image">
@@ -34,6 +38,7 @@
         <div id="download">
         <div class="notecard-container">
             <img src="{{ url_for('static', filename='images/notecard.png') }}" alt="notecard" class="notecard-image">
+            <p class="handwritten-artists">artists i like right now</p>
             <!-- hide when 6m or all time are selected -->
             <div id="lastMonth">
                 <div class="artist-list">
@@ -72,13 +77,11 @@
             </div>
         </div>
         </div>
-    </div>
-
-        <div class="button-container">
+        <center>
             <button class="image-button-download" onclick="downloadAsPNG()">
                 <img src="{{ url_for('static', filename='images/download.png') }}" alt="download image button">
             </button>
-        </div>
+        </center>
         
     </div>
     <footer>Shane Costello & Sage James || CSCI 331 Final Project</footer>   
